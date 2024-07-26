@@ -8,7 +8,8 @@ class AnimatedBottomNavigation extends StatefulWidget {
   final Color selectedColor;
   final Color unselectedColor;
   final Duration animationDuration;
-  final Curve animationCurve;
+  final Curve animationIndicatorCurve;
+  final Curve animationIconCurve;
   final BoxDecoration? indicatorDecoration;
   final BoxDecoration? itemDecoration;
   final BoxDecoration? bottonNavigationDecoration;
@@ -26,7 +27,8 @@ class AnimatedBottomNavigation extends StatefulWidget {
     this.selectedColor = Colors.black,
     this.unselectedColor = Colors.black38,
     this.animationDuration = const Duration(milliseconds: 200),
-    this.animationCurve = Curves.easeOutCubic,
+    this.animationIndicatorCurve = Curves.easeOutCubic,
+    this.animationIconCurve = Curves.easeOutCubic,
     this.indicatorDecoration,
     this.itemDecoration,
     this.bottonNavigationDecoration,
@@ -90,7 +92,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
             AnimatedPositioned(
               duration: widget.animationDuration,
               left: _calculateIndicatorPosition(context),
-              curve: widget.animationCurve,
+              curve: widget.animationIndicatorCurve,
               bottom: widget.indicatorSpaceBotton,
               child: Container(
                 height: widget.indicatorHeight,
@@ -126,7 +128,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
           children: [
             AnimatedPositioned(
               duration: widget.animationDuration,
-              curve: widget.animationCurve,
+              curve: widget.animationIconCurve,
               top: isSelected ? 2.0 : 8.0,
               child: Container(
                 decoration: widget.itemDecoration,

@@ -97,7 +97,8 @@ class ButtonNavigation extends StatelessWidget {
 - **`selectedColor`**: The color of the selected icon.
 - **`unselectedColor`**: The color of unselected icons.
 - **`animationDuration`**: The duration of the tab transition animation.
-- **`animationCurve`**: The curve used for the tab transition animation.
+- **`animationIndicatorCurve`**: The curve used for the tab transition animation for indicator.
+- **`animationIconCurve`**: The curve used for the tab transition animation for icons.
 - **`indicatorDecoration`**: Decoration for the indicator that shows the selected tab.
 - **`itemDecoration`**: Decoration for the individual navigation items.
 - **`bottonNavigationDecoration`**: Decoration for the bottom navigation bar.
