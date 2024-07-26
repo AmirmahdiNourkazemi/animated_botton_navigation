@@ -19,8 +19,7 @@ An animated bottom navigation bar for Flutter, designed to provide a smooth and 
 
 ## preview
 
-<img src="https://raw.githubusercontent.com/AmirmahdiNourkazemi/animated_botton_navigation
-/master/3.gif" alt="Animation" width="400">
+<img src="https://raw.githubusercontent.com/AmirmahdiNourkazemi/animated_botton_navigation/master/3.gif" alt="Animation" width="400">
 
 
 
