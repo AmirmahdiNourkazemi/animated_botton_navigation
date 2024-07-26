@@ -1,7 +1,7 @@
 name: animated_botton_navigation
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/AmirmahdiNourkazemi/animated_botton_navigation
 
 environment:
   sdk: '>=3.3.1 <4.0.0'

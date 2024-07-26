@@ -69,8 +69,9 @@ class ButtonNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBottomNavigation(
-      height: 45,
-      indicatorSpaceBotton: 10,
+      height: 70,
+      indicatorSpaceBotton: 30,
+      iconSize: 32,
       icons: const [
         Icons.home,
         Icons.message,
@@ -88,6 +89,22 @@ class ButtonNavigation extends StatelessWidget {
 }
 
 ```
+### Parameters
+
+- **`icons`**: A list of icons to be displayed in the bottom navigation bar.
+- **`pages`**: A list of pages corresponding to each icon.
+- **`iconSize`**: The height of icon.
+- **`backgroundColor`**: The background color of the bottom navigation bar.
+- **`selectedColor`**: The color of the selected icon.
+- **`unselectedColor`**: The color of unselected icons.
+- **`animationDuration`**: The duration of the tab transition animation.
+- **`animationCurve`**: The curve used for the tab transition animation.
+- **`indicatorDecoration`**: Decoration for the indicator that shows the selected tab.
+- **`itemDecoration`**: Decoration for the individual navigation items.
+- **`bottonNavigationDecoration`**: Decoration for the bottom navigation bar.
+- **`height`**: The height of the bottom navigation bar.
+- **`indicatorHeight`**: The height of the indicator.
+- **`indicatorSpaceBotton`**: The space between the indicator and the bottom of the bar.
 
 
 ## LinkedIn
