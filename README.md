@@ -27,7 +27,7 @@ An animated bottom navigation bar for Flutter, designed to provide a smooth and 
 - Supports custom heights for the navigation bar.
 - Allows setting custom `BoxDecoration` for the bottom navigation bar and its items.
 ## Preview
-
+ 
 | Android  | iOS  |
 | :------------------- | -------------------: |
 | <img src="https://raw.githubusercontent.com/yourusername/animated_bottom_navigation/master/docs/emulator-android.gif" height="714">  | <img src="https://raw.githubusercontent.com/yourusername/animated_bottom_navigation/master/docs/emulator-ios.gif" height="714"> |
