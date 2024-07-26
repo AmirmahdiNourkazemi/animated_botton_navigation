@@ -41,6 +41,7 @@ Add the dependency to your `pubspec.yaml` file:
 dependencies:
   ...
   animated_bottom_navigation: ^0.0.1
+```
 
 ## Basic Usage
 
@@ -87,7 +88,7 @@ class ButtonNavigation extends StatelessWidget {
 }
 
 ```
-```
+
 
 ## LinkedIn
 Connect with me on [LinkedIn](https://www.linkedin.com/in/amirmahdi-nourkazemi-04613023a/)

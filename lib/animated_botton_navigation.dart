@@ -15,12 +15,14 @@ class AnimatedBottomNavigation extends StatefulWidget {
   final double height;
   final double indicatorHeight;
   final double indicatorSpaceBotton;
+  final double iconSize;
 
   const AnimatedBottomNavigation({
     Key? key,
     required this.icons,
     required this.pages,
     this.backgroundColor = Colors.white,
+    this.iconSize = 24.0,
     this.selectedColor = Colors.black,
     this.unselectedColor = Colors.black38,
     this.animationDuration = const Duration(milliseconds: 200),
@@ -42,7 +44,6 @@ class AnimatedBottomNavigation extends StatefulWidget {
 
 class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
   int _selectedTab = 0;
-  final double _iconWidth = 24.0;
 
   void _changePage(int page) {
     setState(() {
@@ -55,7 +56,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
             MediaQuery.of(context).size.width /
             widget.icons.length) +
         (MediaQuery.of(context).size.width / (2 * widget.icons.length)) -
-        (_iconWidth / 2);
+        (widget.iconSize / 2);
   }
 
   @override
@@ -67,6 +68,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
       ),
       bottomNavigationBar: Container(
         height: widget.height,
+        
         decoration: widget.bottonNavigationDecoration ??
             BoxDecoration(
               color: widget.backgroundColor,
@@ -92,7 +94,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
               bottom: widget.indicatorSpaceBotton,
               child: Container(
                 height: widget.indicatorHeight,
-                width: _iconWidth,
+                width: widget.iconSize,
                 decoration: widget.indicatorDecoration ??
                     BoxDecoration(
                       color: widget.selectedColor,
@@ -130,7 +132,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
                 decoration: widget.itemDecoration,
                 child: Icon(
                   icon,
-                  size: _iconWidth,
+                  size: widget.iconSize,
                   color: isSelected
                       ? widget.selectedColor
                       : widget.unselectedColor,
