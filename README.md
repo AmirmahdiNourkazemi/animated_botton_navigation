@@ -19,7 +19,7 @@ An animated bottom navigation bar for Flutter, designed to provide a smooth and 
 
 ## preview
 
-![Animation](3.gif)
+<img src="3.gif" alt="Animation" height="300">
 
 
 ## Features
