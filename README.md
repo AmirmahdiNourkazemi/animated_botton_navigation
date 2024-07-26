@@ -17,8 +17,10 @@ and the Flutter guide for
 
 An animated bottom navigation bar for Flutter, designed to provide a smooth and visually appealing transition between tabs.
 
-![Animation](![3](https://github.com/user-attachments/assets/bc7af947-4e7e-4d75-80bd-7f6809611bf0)
-)
+## preview
+
+![Animation](3.gif)
+
 
 ## Features
 
