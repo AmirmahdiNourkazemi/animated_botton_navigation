@@ -1,23 +1,86 @@
 import 'package:flutter/material.dart';
 
+/// A widget that provides an animated bottom navigation bar with customizable
+/// options for smooth and engaging transitions between pages.
 class AnimatedBottomNavigation extends StatefulWidget {
+  /// The list of icons to display in the bottom navigation bar.
+  ///
+  /// This list must have the same length as the [pages] list.
   final List<IconData> icons;
 
+  /// The list of pages that correspond to each icon in the navigation bar.
+  ///
+  /// This list must have the same length as the [icons] list.
   final List<Widget> pages;
+
+  /// The background color of the bottom navigation bar.
+  ///
+  /// Defaults to [Colors.white].
   final Color backgroundColor;
+
+  /// The color of the selected icon.
+  ///
+  /// Defaults to [Colors.black].
   final Color selectedColor;
+
+  /// The color of the unselected icons.
+  ///
+  /// Defaults to [Colors.black38].
   final Color unselectedColor;
+
+  /// The duration of the animations for the indicator and icons.
+  ///
+  /// Defaults to `Duration(milliseconds: 200)`.
   final Duration animationDuration;
+
+  /// The curve used for the indicator animation.
+  ///
+  /// Defaults to [Curves.easeOutCubic].
   final Curve animationIndicatorCurve;
+
+  /// The curve used for the icon animation.
+  ///
+  /// Defaults to [Curves.easeOutCubic].
   final Curve animationIconCurve;
+
+  /// The decoration for the indicator that moves with the selected icon.
+  ///
+  /// If not provided, a default decoration will be used.
   final BoxDecoration? indicatorDecoration;
+
+  /// The decoration for each item (icon) in the navigation bar.
+  ///
+  /// If not provided, no decoration will be applied.
   final BoxDecoration? itemDecoration;
+
+  /// The decoration for the entire bottom navigation bar.
+  ///
+  /// If not provided, a default decoration with a shadow will be used.
   final BoxDecoration? bottonNavigationDecoration;
+
+  /// The height of the bottom navigation bar.
+  ///
+  /// Defaults to `57.0`.
   final double height;
+
+  /// The height of the indicator that moves with the selected icon.
+  ///
+  /// Defaults to `3.0`.
   final double indicatorHeight;
+
+  /// The space between the bottom of the indicator and the bottom of the navigation bar.
+  ///
+  /// Defaults to `15.0`.
   final double indicatorSpaceBotton;
+
+  /// The size of the icons in the navigation bar.
+  ///
+  /// Defaults to `24.0`.
   final double iconSize;
 
+  /// Creates an instance of [AnimatedBottomNavigation].
+  ///
+  /// The [icons] and [pages] parameters are required and must have the same length.
   const AnimatedBottomNavigation({
     super.key,
     required this.icons,
@@ -33,8 +96,8 @@ class AnimatedBottomNavigation extends StatefulWidget {
     this.itemDecoration,
     this.bottonNavigationDecoration,
     this.height = 57.0,
-    this.indicatorHeight = 3,
-    this.indicatorSpaceBotton = 15,
+    this.indicatorHeight = 3.0,
+    this.indicatorSpaceBotton = 15.0,
   }) : assert(icons.length == pages.length,
             'Icons and pages must have the same length');
 
@@ -47,12 +110,19 @@ class AnimatedBottomNavigation extends StatefulWidget {
 class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
   int _selectedTab = 0;
 
+  /// Changes the currently selected page based on the given index.
+  ///
+  /// This method updates the state to reflect the selected tab.
   void _changePage(int page) {
     setState(() {
       _selectedTab = page;
     });
   }
 
+  /// Calculates the position of the indicator based on the selected tab.
+  ///
+  /// The position is calculated relative to the width of the screen and
+  /// the number of icons in the navigation bar.
   double _calculateIndicatorPosition(BuildContext context) {
     return (_selectedTab *
             MediaQuery.of(context).size.width /
@@ -115,13 +185,16 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
     );
   }
 
+  /// Builds a navigation item for the bottom navigation bar.
+  ///
+  /// The item includes an icon that animates when selected or unselected.
   Widget _buildNavigationItem(int index, IconData icon) {
     bool isSelected = _selectedTab == index;
     return GestureDetector(
       onTap: () => _changePage(index),
       child: SizedBox(
         width: MediaQuery.of(context).size.width / widget.icons.length,
-        height: 57,
+        height: widget.height,
         child: Stack(
           alignment: Alignment.center,
           children: [
