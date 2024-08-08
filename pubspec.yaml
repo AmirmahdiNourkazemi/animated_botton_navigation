@@ -1,6 +1,6 @@
 name: animated_botton_navigation
 description: "An animated bottom navigation bar for Flutter, designed to provide a smooth and visually appealing transition between tabs.you can use like docunment"
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/AmirmahdiNourkazemi/animated_botton_navigation
 
 environment:

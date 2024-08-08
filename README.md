@@ -39,7 +39,7 @@ Add the dependency to your `pubspec.yaml` file:
 ```yaml
 dependencies:
   ...
-  animated_bottom_navigation: ^0.0.1
+  animated_bottom_navigation: [latest version]
 ```
 
 ## Basic Usage
