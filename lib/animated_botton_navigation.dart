@@ -19,7 +19,7 @@ class AnimatedBottomNavigation extends StatefulWidget {
   final double iconSize;
 
   const AnimatedBottomNavigation({
-    Key? key,
+    super.key,
     required this.icons,
     required this.pages,
     this.backgroundColor = Colors.white,
@@ -35,11 +35,11 @@ class AnimatedBottomNavigation extends StatefulWidget {
     this.height = 57.0,
     this.indicatorHeight = 3,
     this.indicatorSpaceBotton = 15,
-  })  : assert(icons.length == pages.length,
-            'Icons and pages must have the same length'),
-        super(key: key);
+  }) : assert(icons.length == pages.length,
+            'Icons and pages must have the same length');
 
   @override
+  // ignore: library_private_types_in_public_api
   _AnimatedBottomNavigationState createState() =>
       _AnimatedBottomNavigationState();
 }
@@ -70,7 +70,6 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
       ),
       bottomNavigationBar: Container(
         height: widget.height,
-        
         decoration: widget.bottonNavigationDecoration ??
             BoxDecoration(
               color: widget.backgroundColor,
