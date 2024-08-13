@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
 /// A widget that provides an animated bottom navigation bar with customizable
-/// options for smooth and engaging transitions between pages.
+/// options for smooth and engaging transitions between icons.
 class AnimatedBottomNavigation extends StatefulWidget {
   /// The list of icons to display in the bottom navigation bar.
-  ///
-  /// This list must have the same length as the [pages] list.
   final List<IconData> icons;
 
-  /// The list of pages that correspond to each icon in the navigation bar.
+  /// A callback function that gets triggered when an icon is tapped.
   ///
-  /// This list must have the same length as the [icons] list.
-  final List<Widget> pages;
+  /// The navigation will be handled externally using this callback.
+  final Function(int) onTapChange;
 
   /// The background color of the bottom navigation bar.
   ///
@@ -80,11 +78,11 @@ class AnimatedBottomNavigation extends StatefulWidget {
 
   /// Creates an instance of [AnimatedBottomNavigation].
   ///
-  /// The [icons] and [pages] parameters are required and must have the same length.
+  /// The [icons] parameter is required and [onTapChange] should be provided to handle navigation.
   const AnimatedBottomNavigation({
     super.key,
     required this.icons,
-    required this.pages,
+    required this.onTapChange,
     this.backgroundColor = Colors.white,
     this.iconSize = 24.0,
     this.selectedColor = Colors.black,
@@ -98,11 +96,9 @@ class AnimatedBottomNavigation extends StatefulWidget {
     this.height = 57.0,
     this.indicatorHeight = 3.0,
     this.indicatorSpaceBotton = 15.0,
-  }) : assert(icons.length == pages.length,
-            'Icons and pages must have the same length');
+  });
 
   @override
-  // ignore: library_private_types_in_public_api
   _AnimatedBottomNavigationState createState() =>
       _AnimatedBottomNavigationState();
 }
@@ -110,13 +106,14 @@ class AnimatedBottomNavigation extends StatefulWidget {
 class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
   int _selectedTab = 0;
 
-  /// Changes the currently selected page based on the given index.
+  /// Changes the currently selected tab based on the given index.
   ///
-  /// This method updates the state to reflect the selected tab.
+  /// This method updates the state to reflect the selected tab and triggers the onTapChange callback if provided.
   void _changePage(int page) {
     setState(() {
       _selectedTab = page;
     });
+    widget.onTapChange.call(page);
   }
 
   /// Calculates the position of the indicator based on the selected tab.
@@ -133,54 +130,48 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-        index: _selectedTab,
-        children: widget.pages,
-      ),
-      bottomNavigationBar: Container(
-        height: widget.height,
-        decoration: widget.bottonNavigationDecoration ??
-            BoxDecoration(
-              color: widget.backgroundColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+    return Container(
+      height: widget.height,
+      decoration: widget.bottonNavigationDecoration ??
+          BoxDecoration(
+            color: widget.backgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: const Offset(0, 3),
               ),
+            ],
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
             ),
-        child: Stack(
-          children: [
-            AnimatedPositioned(
-              duration: widget.animationDuration,
-              left: _calculateIndicatorPosition(context),
-              curve: widget.animationIndicatorCurve,
-              bottom: widget.indicatorSpaceBotton,
-              child: Container(
-                height: widget.indicatorHeight,
-                width: widget.iconSize,
-                decoration: widget.indicatorDecoration ??
-                    BoxDecoration(
-                      color: widget.selectedColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-              ),
+          ),
+      child: Stack(
+        children: [
+          AnimatedPositioned(
+            duration: widget.animationDuration,
+            left: _calculateIndicatorPosition(context),
+            curve: widget.animationIndicatorCurve,
+            bottom: widget.indicatorSpaceBotton,
+            child: Container(
+              height: widget.indicatorHeight,
+              width: widget.iconSize,
+              decoration: widget.indicatorDecoration ??
+                  BoxDecoration(
+                    color: widget.selectedColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(widget.icons.length, (index) {
-                return _buildNavigationItem(index, widget.icons[index]);
-              }),
-            ),
-          ],
-        ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: List.generate(widget.icons.length, (index) {
+              return _buildNavigationItem(index, widget.icons[index]);
+            }),
+          ),
+        ],
       ),
     );
   }

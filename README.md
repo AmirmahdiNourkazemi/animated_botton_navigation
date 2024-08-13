@@ -45,44 +45,57 @@ dependencies:
 ## Basic Usage
 
 ```dart
+import 'package:animated_botton_navigation/animated_botton_navigation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_bottom_navigation/animated_bottom_navigation.dart';
+import 'package:flutter/widgets.dart';
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Animated Bottom Navigation Example',
-      home: Scaffold(
-        bottomNavigationBar: ButtonNavigation(),
-      ),
+    return MaterialApp(
+      home: HomeScreen(),
     );
   }
 }
 
-class ButtonNavigation extends StatelessWidget {
-  const ButtonNavigation({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    Center(child: Text('Home Page')),
+    Center(child: Text('Search Page')),
+    Center(child: Text('Profile Page')),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBottomNavigation(
-      height: 70,
-      indicatorSpaceBotton: 30,
-      iconSize: 32,
-      icons: const [
-        Icons.home,
-        Icons.message,
-        Icons.favorite,
-        Icons.person,
-      ],
-      pages: const [
-        Center(child: Text('Page 1')),
-        Center(child: Text('Page 2')),
-        Center(child: Text('Page 3')),
-        Center(child: Text('Page 4')),
-      ],
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: AnimatedBottomNavigation(
+        icons: [
+          Icons.home,
+          Icons.search,
+          Icons.person,
+        ],
+        onTapChange: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        backgroundColor: Colors.blue,
+        selectedColor: Colors.white,
+        unselectedColor: Colors.white70,
+      ),
     );
   }
 }
@@ -91,7 +104,7 @@ class ButtonNavigation extends StatelessWidget {
 ### Parameters
 
 - **`icons`**: A list of icons to be displayed in the bottom navigation bar.
-- **`pages`**: A list of pages corresponding to each icon.
+- **`onTapChange`**: this is required for change pages you can see example to better use of that.
 - **`iconSize`**: The height of icon.
 - **`backgroundColor`**: The background color of the bottom navigation bar.
 - **`selectedColor`**: The color of the selected icon.

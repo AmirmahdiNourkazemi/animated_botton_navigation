@@ -11,3 +11,7 @@
 ## 0.0.3 
 
 * TODO: Add example for use easier also this is an easy package.
+
+## 0.0.4 
+
+* TODO: For problem with Appbar we have to remove pages and add onTapPageChange 

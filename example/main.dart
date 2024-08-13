@@ -4,59 +4,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Animated Bottom Navigation Example',
-      home: Scaffold(
-        extendBody: true,
-        bottomNavigationBar: ButtonNavigation(),
-      ),
+    return MaterialApp(
+      home: HomeScreen(),
     );
   }
 }
 
-class ButtonNavigation extends StatelessWidget {
-  const ButtonNavigation({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    Center(child: Text('Home Page')),
+    Center(child: Text('Search Page')),
+    Center(child: Text('Profile Page')),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBottomNavigation(
-      height: 90,
-      indicatorSpaceBotton: 40,
-      iconSize: 32,
-      icons: const [
-        Icons.home,
-        Icons.person,
-        Icons.note,
-        Icons.edit,
-      ],
-      pages: [
-        Container(
-          color: Colors.blue,
-          child: const Center(child: Text('Page 1')),
-        ),
-        Container(
-          color: Colors.lightBlue,
-          child: const Center(
-            child: Text('Page 2'),
-          ),
-        ),
-        Container(
-          color: Colors.deepPurple,
-          child: const Center(child: Text('Page 3')),
-        ),
-        Container(
-          color: Colors.yellow,
-          child: const Center(child: Text('Page 4')),
-        ),
-      ],
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: AnimatedBottomNavigation(
+        icons: [
+          Icons.home,
+          Icons.search,
+          Icons.person,
+        ],
+        onTapChange: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        backgroundColor: Colors.blue,
+        selectedColor: Colors.white,
+        unselectedColor: Colors.white70,
+      ),
     );
   }
 }
