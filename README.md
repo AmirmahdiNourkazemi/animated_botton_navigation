@@ -45,10 +45,8 @@ dependencies:
 ## Basic Usage
 
 ```dart
-import 'package:animated_botton_navigation/animated_botton_navigation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:animated_botton_navigation/animated_botton_navigation.dart'; 
 
 void main() {
   runApp(MyApp());
@@ -80,8 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text('Animated botton navigation'),
+      ),
       body: _pages[_currentIndex],
       bottomNavigationBar: AnimatedBottomNavigation(
+        height: 70,
+        indicatorSpaceBotton: 25,
         icons: [
           Icons.home,
           Icons.search,
@@ -92,9 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
-        backgroundColor: Colors.blue,
-        selectedColor: Colors.white,
-        unselectedColor: Colors.white70,
       ),
     );
   }
