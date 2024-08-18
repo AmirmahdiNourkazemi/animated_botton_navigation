@@ -16,6 +16,11 @@ class AnimatedBottomNavigation extends StatefulWidget {
   /// Defaults to [Colors.white].
   final Color backgroundColor;
 
+  /// The current index of the selected icon.
+  ///
+  /// Defaults to `0`.
+  final int currentIndex;
+
   /// The color of the selected icon.
   ///
   /// Defaults to [Colors.black].
@@ -83,6 +88,7 @@ class AnimatedBottomNavigation extends StatefulWidget {
     super.key,
     required this.icons,
     required this.onTapChange,
+    this.currentIndex = 0,
     this.backgroundColor = Colors.white,
     this.iconSize = 24.0,
     this.selectedColor = Colors.black,
@@ -104,24 +110,19 @@ class AnimatedBottomNavigation extends StatefulWidget {
 }
 
 class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
-  int _selectedTab = 0;
 
   /// Changes the currently selected tab based on the given index.
   ///
   /// This method updates the state to reflect the selected tab and triggers the onTapChange callback if provided.
   void _changePage(int page) {
-    setState(() {
-      _selectedTab = page;
-    });
     widget.onTapChange.call(page);
   }
-
   /// Calculates the position of the indicator based on the selected tab.
   ///
   /// The position is calculated relative to the width of the screen and
   /// the number of icons in the navigation bar.
   double _calculateIndicatorPosition(BuildContext context) {
-    return (_selectedTab *
+    return (widget.currentIndex *
             MediaQuery.of(context).size.width /
             widget.icons.length) +
         (MediaQuery.of(context).size.width / (2 * widget.icons.length)) -
@@ -180,7 +181,7 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
   ///
   /// The item includes an icon that animates when selected or unselected.
   Widget _buildNavigationItem(int index, IconData icon) {
-    bool isSelected = _selectedTab == index;
+    bool isSelected = widget.currentIndex == index;
     return GestureDetector(
       onTap: () => _changePage(index),
       child: SizedBox(

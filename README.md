@@ -91,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.search,
           Icons.person,
         ],
+        currentIndex: _currentIndex,
         onTapChange: (index) {
           setState(() {
             _currentIndex = index;
@@ -105,7 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
 ### Parameters
 
 - **`icons`**: A list of icons to be displayed in the bottom navigation bar.
-- **`onTapChange`**: this is required for change pages you can see example to better use of that.
+- **`onTapChange`**: This is required for change pages you can see example to better use of that.
+- **`currentIndex`**: This parameter allows you to control the currently selected tab index.
 - **`iconSize`**: The height of icon.
 - **`backgroundColor`**: The background color of the bottom navigation bar.
 - **`selectedColor`**: The color of the selected icon.

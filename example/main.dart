@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.search,
           Icons.person,
         ],
+        currentIndex: _currentIndex,
         onTapChange: (index) {
           setState(() {
             _currentIndex = index;

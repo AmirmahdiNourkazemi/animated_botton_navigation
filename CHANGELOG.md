@@ -15,3 +15,7 @@
 ## 0.0.4 
 
 * TODO: For problem with Appbar we have to remove pages and add onTapPageChange 
+
+## 0.0.5 
+
+* TODO: Add currentIndex for manage better selected icons in seprate index pages
