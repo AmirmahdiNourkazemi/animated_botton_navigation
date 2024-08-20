@@ -110,13 +110,13 @@ class AnimatedBottomNavigation extends StatefulWidget {
 }
 
 class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
-
   /// Changes the currently selected tab based on the given index.
   ///
   /// This method updates the state to reflect the selected tab and triggers the onTapChange callback if provided.
   void _changePage(int page) {
     widget.onTapChange.call(page);
   }
+
   /// Calculates the position of the indicator based on the selected tab.
   ///
   /// The position is calculated relative to the width of the screen and
