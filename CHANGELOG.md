@@ -22,4 +22,8 @@
 
 ## 0.0.7 
 
+* TODO: The better intraction with buttoms in detect touchable regions
+
+## 0.0.8 
+
 * TODO: Comply with new version of flutter 3.27.0, Dart 3.6.0
