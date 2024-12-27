@@ -19,3 +19,7 @@
 ## 0.0.5 
 
 * TODO: Add currentIndex for manage better selected icons in seprate index pages
+
+## 0.0.7 
+
+* TODO: Comply with new version of flutter 3.27.0, Dart 3.6.0

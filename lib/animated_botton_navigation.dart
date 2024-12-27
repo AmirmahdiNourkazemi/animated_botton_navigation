@@ -136,12 +136,12 @@ class _AnimatedBottomNavigationState extends State<AnimatedBottomNavigation> {
       decoration: widget.bottonNavigationDecoration ??
           BoxDecoration(
             color: widget.backgroundColor,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: Color(0xFFEEEEEE),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: const Offset(0, 3),
+                offset: Offset(0, 3),
               ),
             ],
             borderRadius: const BorderRadius.only(
